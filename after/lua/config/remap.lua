@@ -11,6 +11,8 @@ vim.keymap.set('n', '<C-v>', '"+P')
 vim.keymap.set('v', '<C-v>', '"+P')
 vim.keymap.set('i', '<C-v>', '<esc>l"+Pa')
 
+vim.keymap.set('n', 'U', function() vim.cmd.redo() end)
+
 vim.keymap.set('n', 'Q', '<Nop>')
 vim.keymap.set('i', '<MiddleMouse>', '<Nop>')
 vim.keymap.set('v', '<MiddleMouse>', '<Nop>')
