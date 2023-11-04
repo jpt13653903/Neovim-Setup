@@ -5,23 +5,17 @@ return require('packer').startup(
     use { 'wbthomason/packer.nvim' }
 
     -- use { 'folke/tokyonight.nvim'
-      -- config = function()
-      --   vim.cmd.colorscheme('tokyonight')
-      --   -- vim.cmd.colorscheme('tokyonight-night')
-      --   -- vim.cmd.colorscheme('tokyonight-storm')
-      --   -- vim.cmd.colorscheme('tokyonight-day')
-      --   -- vim.cmd.colorscheme('tokyonight-moon')
-      -- end
+    --   config = function()
+    --     vim.cmd.colorscheme('tokyonight')
+    --     -- vim.cmd.colorscheme('tokyonight-night')
+    --     -- vim.cmd.colorscheme('tokyonight-storm')
+    --     -- vim.cmd.colorscheme('tokyonight-day')
+    --     -- vim.cmd.colorscheme('tokyonight-moon')
+    --   end
     -- }
-    use { 'catppuccin/nvim',
-      config = function()
-        vim.cmd.colorscheme('catppuccin')
-        -- vim.cmd.colorscheme('catppuccin-latte')
-        -- vim.cmd.colorscheme('catppuccin-frappe')
-        -- vim.cmd.colorscheme('catppuccin-macchiato')
-        -- vim.cmd.colorscheme('catppuccin-mocha')
-      end
-    }
+
+    use { 'catppuccin/nvim' }
+    -- use { 'ful1e5/onedark.nvim' }
 
     use { 'nvim-telescope/telescope.nvim',
       tag = '0.1.4',
