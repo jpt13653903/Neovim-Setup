@@ -6,7 +6,8 @@ vim.opt.fileformats  = 'unix,dos'
 -- vim.opt.lines = 20
 -- vim.opt.columns = 90
 
-vim.opt.nu          = true -- activate line numbers
+vim.opt.nu          = true
+vim.opt.rnu         = true
 vim.opt.colorcolumn = '81'
 vim.opt.signcolumn  = 'number'
 
@@ -19,7 +20,6 @@ vim.opt.tabstop       = 2
 vim.opt.softtabstop   = 2
 vim.opt.shiftwidth    = 2
 vim.opt.expandtab     = true
-vim.opt.formatoptions = 't'
 
 vim.opt.foldmethod    = 'indent'
 vim.opt.foldignore    = ''
