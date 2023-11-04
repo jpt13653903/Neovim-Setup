@@ -6,3 +6,5 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fm', builtin.marks, {})
 
+vim.keymap.set('n', '<C-f>', builtin.live_grep, {})
+
