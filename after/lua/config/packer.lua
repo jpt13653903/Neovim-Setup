@@ -17,6 +17,10 @@ return require('packer').startup(
     use { 'catppuccin/nvim' }
     -- use { 'ful1e5/onedark.nvim' }
 
+    use { 'nvim-treesitter/nvim-treesitter',
+      { run = ':TSUpdate' }
+    }
+
     use { 'nvim-telescope/telescope.nvim',
       tag = '0.1.4',
       -- or                          , branch = '0.1.x',
