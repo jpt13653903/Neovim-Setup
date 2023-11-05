@@ -8,10 +8,7 @@ colour.setup({
     shade      = 'dark',
     percentage = 0.2,
   },
-  styles = {
-    comments     = {},
-    conditionals = {},
-  },
+  no_italic = true,
   -- highlight_overrides = {
   --   all = function(colors)
   --     return {
@@ -40,6 +37,6 @@ colour.setup({
 
 vim.opt.background = 'dark'
 vim.cmd.colors('catppuccin')
--- vim.cmd.colors('petrel-jpt')
+-- vim.cmd.colors('petrel_jpt')
 vim.cmd.syntax('enable')
 
