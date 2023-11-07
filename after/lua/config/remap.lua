@@ -30,3 +30,12 @@ vim.keymap.set('n', '<F10>', '080lBi<cr><esc>')
 vim.keymap.set('i', '<F7>',  '<esc>l]szzi')
 vim.keymap.set('i', '<F10>', '<esc>080lBi<cr>')
 
+vim.keymap.set('n', '<leader>tn', vim.cmd.tabnew)
+vim.keymap.set('n', '<leader>tc', vim.cmd.tabclose)
+vim.keymap.set('n', '<leader>th', function() vim.cmd.tabmove('-1') end)
+vim.keymap.set('n', '<leader>tl', function() vim.cmd.tabmove('+1') end)
+
+vim.keymap.set('n', '<leader>tw', "mT:tabclose<cr>:vsp<cr>'T")
+vim.keymap.set('n', '<leader>tW', "mT:tabclose<cr>gT:vsp<cr>'T")
+vim.keymap.set('n', '<leader>wt', "<C-w>T")
+
