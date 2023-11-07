@@ -1,21 +1,19 @@
-vim.keymap.set('i', '<tab>', '<esc>')
-vim.keymap.set('v', '<tab>', '<esc>')
+vim.keymap.set({'i', 'v'}, '<tab>', '<esc>')
 
-vim.keymap.set('n', '<C-a>', 'ggVG')
-vim.keymap.set('n', '<C-s>', ':wa<cr>')
-vim.keymap.set('i', '<C-s>', '<esc>:wa<cr>a')
+vim.keymap.set( 'n',            '<C-a>', 'ggVG')
+vim.keymap.set({'n', 'i', 'v'}, '<C-s>', vim.cmd.wa)
 
-vim.keymap.set('v', '<C-x>', '"+d')
-vim.keymap.set('v', '<C-c>', '"+y')
-vim.keymap.set('n', '<C-v>', '"+P')
-vim.keymap.set('v', '<C-v>', '"+P')
-vim.keymap.set('i', '<C-v>', '<esc>l"+Pa')
+vim.keymap.set( 'i',       '<C-z>', '<esc>ui')
+vim.keymap.set( 'v',       '<C-x>', '"+x')
+vim.keymap.set( 'v',       '<C-c>', '"+y')
+vim.keymap.set({'n', 'v'}, '<C-v>', '"+gP')
+vim.keymap.set( 'i',       '<C-v>', '<C-r>+')
 
-vim.keymap.set('n', 'U', function() vim.cmd.redo() end)
+vim.keymap.set('n', 'U', vim.cmd.redo)
 
 vim.keymap.set('n', 'Q', '<Nop>')
-vim.keymap.set('i', '<MiddleMouse>', '<Nop>')
-vim.keymap.set('v', '<MiddleMouse>', '<Nop>')
+
+vim.keymap.set({'i', 'v'}, '<MiddleMouse>', '<Nop>')
 
 vim.keymap.set('i', '<C-Space>', '<C-p>')
 
