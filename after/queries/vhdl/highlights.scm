@@ -34,7 +34,7 @@
     "map"
 ] @keyword
 
-[ "pure" "impure" ] @storageclass
+[ "pure" "impure" ] @type.qualifier
 
 [ "is" "begin" "end" ] @keyword.special
 
