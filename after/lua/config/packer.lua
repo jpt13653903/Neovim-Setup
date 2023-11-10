@@ -27,6 +27,8 @@ return require('packer').startup(
       requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    use { 'nvim-treesitter/playground' }
+
     use { 'mbbill/undotree' }
 
     -- use { 'VonHeikemen/lsp-zero.nvim',
