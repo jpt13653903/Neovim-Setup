@@ -7,7 +7,7 @@ vim.keymap.set( 'i',       '<C-z>', '<esc>ui')
 vim.keymap.set( 'v',       '<C-x>', '"+x')
 vim.keymap.set( 'v',       '<C-c>', '"+y')
 vim.keymap.set({'n', 'v'}, '<C-v>', '"+gP')
-vim.keymap.set( 'i',       '<C-v>', '<C-r>+')
+vim.keymap.set( 'i',       '<C-v>', '<C-r><C-p>+')
 
 vim.keymap.set('n', 'U', vim.cmd.redo)
 
