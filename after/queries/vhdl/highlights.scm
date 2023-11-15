@@ -34,6 +34,9 @@
     "map"
 ] @keyword
 
+(named_association_element
+    actual_part: (open) @variable.builtin)
+
 [ "pure" "impure" ] @type.qualifier
 
 [ "is" "begin" "end" ] @keyword.special
