@@ -4,3 +4,4 @@ vim.cmd.autocmd('FocusGained * silent! checktime')
 
 -- Automatically remove trailing white-space on save
 vim.cmd.autocmd('BufWrite * silent! %s/\\s\\+$//g')
+
