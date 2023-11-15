@@ -47,3 +47,5 @@ vim.opt.scrolloff = 5
 
 vim.g.mapleader = ' '
 
+vim.opt.autoread = true
+vim.cmd.autocmd('FocusGained * silent! checktime')
