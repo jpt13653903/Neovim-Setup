@@ -11,6 +11,17 @@ parser_config.vhdl = {
   filetype = 'vhdl', -- if filetype does not match the parser name
 }
 
+parser_config.hungarian = {
+  install_info = {
+    url = "https://github.com/jpt13653903/tree-sitter-hungarian.git",
+    files = { 'src/parser.c' },
+    branch = 'master',
+    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = 'hungarian', -- if filetype does not match the parser name
+}
+
 local treesitter = require('nvim-treesitter.configs')
 
 treesitter.setup {
@@ -37,6 +48,7 @@ treesitter.setup {
     'html',
     'htmldjango',
     'http',
+    'hungarian',
     'ini',
     'javascript',
     'json',

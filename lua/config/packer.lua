@@ -27,7 +27,8 @@ return require('packer').startup(
       requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use { 'nvim-treesitter/playground' }
+    -- Deprecated: use InspectTree instead
+    -- use { 'nvim-treesitter/playground' }
 
     use { 'mbbill/undotree' }
 
