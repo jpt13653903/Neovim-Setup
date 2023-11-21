@@ -22,13 +22,13 @@ vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '^', 'g^')
 
-vim.keymap.set('n', 'n',  'nzzzv')
-vim.keymap.set('n', 'N',  'Nzzzv')
+vim.keymap.set('n', 'n',  'nzv')
+vim.keymap.set('n', 'N',  'Nzv')
 
-vim.keymap.set('n', '<F7>',  ']szzzv')
+vim.keymap.set('n', '<F7>',  ']szv')
 vim.keymap.set('n', '<F10>', '080lBi<cr><esc>')
 
-vim.keymap.set('i', '<F7>',  '<esc>l]szzi')
+vim.keymap.set('i', '<F7>',  '<esc>l]szvi')
 vim.keymap.set('i', '<F10>', '<esc>080lBi<cr>')
 
 vim.keymap.set('n', '<leader>tn', vim.cmd.tabnew)
