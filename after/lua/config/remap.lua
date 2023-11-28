@@ -1,4 +1,4 @@
-vim.keymap.set({'i', 'v', 'c'}, '<tab>', '<esc>')
+vim.keymap.set({'n', 'i', 'v', 'c'}, '<tab>', '<esc>')
 
 vim.keymap.set( 'n',            '<C-a>', 'ggVG')
 vim.keymap.set({'n', 'i', 'v'}, '<C-s>', vim.cmd.wa)
