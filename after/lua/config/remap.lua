@@ -1,4 +1,4 @@
-vim.keymap.set({'i', 'v'}, '<tab>', '<esc>')
+vim.keymap.set({'i', 'v', 'c'}, '<tab>', '<esc>')
 
 vim.keymap.set( 'n',            '<C-a>', 'ggVG')
 vim.keymap.set({'n', 'i', 'v'}, '<C-s>', vim.cmd.wa)
@@ -9,6 +9,10 @@ vim.keymap.set( 'v',       '<C-c>', '"+y')
 vim.keymap.set({'n', 'v'}, '<C-v>', '"+gP')
 vim.keymap.set( 'i',       '<C-v>', '<C-r><C-p>+')
 vim.keymap.set( 'c',       '<C-v>', '<C-r>+')
+
+vim.keymap.set({'n', 'v'}, '<S-Insert>', '"+gP')
+vim.keymap.set( 'i',       '<S-Insert>', '<C-r><C-p>+')
+vim.keymap.set( 'c',       '<S-Insert>', '<C-r>+')
 
 vim.keymap.set('n', 'U', vim.cmd.redo)
 
@@ -25,9 +29,11 @@ vim.keymap.set('n', '^', 'g^')
 vim.keymap.set('n', 'n',  'nzv')
 vim.keymap.set('n', 'N',  'Nzv')
 
+vim.keymap.set('n', '<F3>',  'nzv')
 vim.keymap.set('n', '<F7>',  ']szv')
 vim.keymap.set('n', '<F10>', '080lBi<cr><esc>')
 
+vim.keymap.set('i', '<F3>',  '<esc>lnzvi')
 vim.keymap.set('i', '<F7>',  '<esc>l]szvi')
 vim.keymap.set('i', '<F10>', '<esc>080lBi<cr>')
 
