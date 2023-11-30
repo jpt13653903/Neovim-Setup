@@ -1,4 +1,5 @@
 vim.opt.title        = true
+vim.opt.guifont      = 'Cascadia Code SemiLight:h11'
 
 vim.opt.encoding     = 'utf-8'
 vim.opt.termencoding = 'utf-8'
