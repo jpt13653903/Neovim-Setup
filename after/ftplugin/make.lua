@@ -1,5 +1,5 @@
-vim.opt.tabstop = 4
+require('common.GenericKeymaps')
+CommentKeymap([[#]])
 
-vim.keymap.set({'n', 'v'}, '<leader>c', [[:s/^\(\s*\)/\1# /g<cr><esc>:nohlsearch<cr>]])
-vim.keymap.set({'n', 'v'}, '<leader>C', [[:s/^\(\s*\)#\s*/\1/g<cr><esc>:nohlsearch<cr>]])
+vim.opt.tabstop = 4
 

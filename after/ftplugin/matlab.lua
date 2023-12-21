@@ -1,3 +1,3 @@
 require('common.GenericKeymaps')
-CommentKeymap([[--]])
+CommentKeymap([[%]])
 

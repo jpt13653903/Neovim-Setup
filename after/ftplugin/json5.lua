@@ -1,3 +1,6 @@
+require('common.GenericKeymaps')
+CommentKeymap([[\/\/]])
+
 vim.api.nvim_create_user_command('Prettyfy', function()
     pcall(vim.cmd, [[:%s/{/{\r/g]])
     pcall(vim.cmd, [[:%s/}/\r}/g]])
@@ -7,7 +10,4 @@ vim.api.nvim_create_user_command('Prettyfy', function()
     vim.cmd.nohlsearch()
     vim.cmd.normal('ggVG=')
 end, {})
-
-vim.keymap.set({'n', 'v'}, '<leader>c', [[:s/^\(\s*\)/\1\/\/ /g<cr><esc>:nohlsearch<cr>]])
-vim.keymap.set({'n', 'v'}, '<leader>C', [[:s/^\(\s*\)\/\/\s*/\1/g<cr><esc>:nohlsearch<cr>]])
 
