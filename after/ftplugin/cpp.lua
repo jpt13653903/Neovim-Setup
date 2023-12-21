@@ -28,3 +28,6 @@ vim.api.nvim_create_user_command('StyleAllman', function()
     vim.cmd.nohlsearch()
 end, {})
 
+vim.keymap.set({'n', 'v'}, '<leader>c', [[:s/^\(\s*\)/\1\/\/ /g<cr><esc>:nohlsearch<cr>]])
+vim.keymap.set({'n', 'v'}, '<leader>C', [[:s/^\(\s*\)\/\/\s*/\1/g<cr><esc>:nohlsearch<cr>]])
+
