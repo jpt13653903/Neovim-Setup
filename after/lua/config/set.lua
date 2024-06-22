@@ -2,7 +2,7 @@ vim.opt.title        = true
 vim.opt.guifont      = 'Cascadia Code SemiLight:h11'
 
 vim.opt.encoding     = 'utf-8'
-vim.opt.termencoding = 'utf-8'
+-- vim.opt.termencoding = 'utf-8'
 vim.opt.fileformat   = 'unix'
 vim.opt.fileformats  = 'unix,dos'
 
@@ -19,7 +19,7 @@ vim.opt.undofile      = false
 vim.opt.cindent       = false
 vim.opt.autoindent    = false
 vim.opt.smartindent   = true
-vim.opt.tabstop       = 2
+vim.opt.tabstop       = 4
 vim.opt.softtabstop   = 0
 vim.opt.shiftwidth    = 0
 vim.opt.expandtab     = true
