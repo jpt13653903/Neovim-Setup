@@ -32,6 +32,11 @@ return require('packer').startup(
 
     use { 'mbbill/undotree' }
 
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
     -- use { 'VonHeikemen/lsp-zero.nvim',
       -- branch = 'v3.x',
       -- requires = {
