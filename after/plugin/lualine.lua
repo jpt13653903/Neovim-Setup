@@ -31,12 +31,12 @@ require('lualine').setup {
         }
     },
     sections = {
-        lualine_a = {{'mode', icons_enabled = false }},
-        lualine_b = {{ 'filename', path = 1 }},
-        lualine_c = {},
-        lualine_x = {'encoding', { 'fileformat', symbols = { unix = 'Unix', dos = 'Dos', mac = 'Mac' } }, 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_a = {},
+        lualine_b = {'filetype'},
+        lualine_c = {{ 'filename', path = 1 }},
+        lualine_x = {'encoding'},
+        lualine_y = {'location', 'progress'},
+        lualine_z = {{ 'fileformat', symbols = { unix = 'U', dos = 'D', mac = 'M' } } }
     },
     inactive_sections = {
         lualine_a = {},
