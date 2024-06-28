@@ -1,888 +1,337 @@
-; 3.2 Entity declaration {{{
-(type_mark) @type
+;-------------------------------------------------------------------------------
+;
+; ## Capture Reference
+;
+; https://neovim.io/doc/user/treesitter.html#treesitter-highlight-groups
+;
+; @variable                    various variable names
+; @variable.builtin            built-in variable names (e.g. this, self)
+; @variable.parameter          parameters of a function
+; @variable.parameter.builtin  special parameters (e.g. _, it)
+; @variable.member             object and struct fields
+;
+; @constant                    constant identifiers
+; @constant.builtin            built-in constant values
+; @constant.macro              constants defined by the preprocessor
+;
+; @module                      modules or namespaces
+; @module.builtin              built-in modules or namespaces
+; @label                       GOTO and other labels (e.g. label: in C), including heredoc labels
+;
+; @string                      string literals
+; @string.documentation        string documenting code (e.g. Python docstrings)
+; @string.regexp               regular expressions
+; @string.escape               escape sequences
+; @string.special              other special strings (e.g. dates)
+; @string.special.symbol       symbols or atoms
+; @string.special.path         filenames
+; @string.special.url          URIs (e.g. hyperlinks)
+;
+; @character                   character literals
+; @character.special           special characters (e.g. wildcards)
+;
+; @boolean                     boolean literals
+; @number                      numeric literals
+; @number.float                floating-point number literals
+;
+; @type                        type or class definitions and annotations
+; @type.builtin                built-in types
+; @type.definition             identifiers in type definitions (e.g. typedef <type> <identifier> in C)
+;
+; @attribute                   attribute annotations (e.g. Python decorators, Rust lifetimes)
+; @attribute.builtin           builtin annotations (e.g. @property in Python)
+; @property                    the key in key/value pairs
+;
+; @function                    function definitions
+; @function.builtin            built-in functions
+; @function.call               function calls
+; @function.macro              preprocessor macros
+;
+; @function.method             method definitions
+; @function.method.call        method calls
+;
+; @constructor                 constructor calls and definitions
+; @operator                    symbolic operators (e.g. +, *)
+;
+; @keyword                     keywords not fitting into specific categories
+; @keyword.coroutine           keywords related to coroutines (e.g. go in Go, async/await in Python)
+; @keyword.function            keywords that define a function (e.g. func in Go, def in Python)
+; @keyword.operator            operators that are English words (e.g. and, or)
+; @keyword.import              keywords for including modules (e.g. import, from in Python)
+; @keyword.type                keywords defining composite types (e.g. struct, enum)
+; @keyword.modifier            keywords defining type modifiers (e.g. const, static, public)
+; @keyword.repeat              keywords related to loops (e.g. for, while)
+; @keyword.return              keywords like return and yield
+; @keyword.debug               keywords related to debugging
+; @keyword.exception           keywords related to exceptions (e.g. throw, catch)
+;
+; @keyword.conditional         keywords related to conditionals (e.g. if, else)
+; @keyword.conditional.ternary ternary operator (e.g. ?, :)
+;
+; @keyword.directive           various preprocessor directives and shebangs
+; @keyword.directive.define    preprocessor definition directives
+;
+; @punctuation.delimiter       delimiters (e.g. ;, ., ,)
+; @punctuation.bracket         brackets (e.g. (), {}, [])
+; @punctuation.special         special symbols (e.g. {} in string interpolation)
+;
+; @comment                     line and block comments
+; @comment.documentation       comments documenting code
+;
+; @comment.error               error-type comments (e.g. ERROR, FIXME, DEPRECATED)
+; @comment.warning             warning-type comments (e.g. WARNING, FIX, HACK)
+; @comment.todo                todo-type comments (e.g. TODO, WIP)
+; @comment.note                note-type comments (e.g. NOTE, INFO, XXX)
+;
+; @markup.strong               bold text
+; @markup.italic               italic text
+; @markup.strikethrough        struck-through text
+; @markup.underline            underlined text (only for literal underline markup!)
+;
+; @markup.heading              headings, titles (including markers)
+; @markup.heading.1            top-level heading
+; @markup.heading.2            section heading
+; @markup.heading.3            subsection heading
+; @markup.heading.4            and so on
+; @markup.heading.5            and so forth
+; @markup.heading.6            six levels ought to be enough for anybody
+;
+; @markup.quote                block quotes
+; @markup.math                 math environments (e.g. $ ... $ in LaTeX)
+;
+; @markup.link                 text references, footnotes, citations, etc.
+; @markup.link.label           link, reference descriptions
+; @markup.link.url             URL-style links
+;
+; @markup.raw                  literal or verbatim text (e.g. inline code)
+; @markup.raw.block            literal or verbatim text as a stand-alone block
+;
+; @markup.list                 list markers
+; @markup.list.checked         checked todo-style list markers
+; @markup.list.unchecked       unchecked todo-style list markers
+;
+; @diff.plus                   added text (for diff files)
+; @diff.minus                  deleted text (for diff files)
+; @diff.delta                  changed text (for diff files)
+;
+; @tag                         XML-style tag names (e.g. in XML, HTML, etc.)
+; @tag.builtin                 XML-style tag names (e.g. HTML5 tags)
+; @tag.attribute               XML-style tag attributes
+; @tag.delimiter               XML-style tag delimiters
+; ------------------------------------------------------------------------------
+
 (comment) @comment @spell
-(mode) @type.qualifier
-
-(wait_statement) @keyword.coroutine
-
-[ "assert" "report" "severity" ] @debug
-(severity_expression
-    (simple_name) @constant.builtin (#any-of? @constant.builtin
-        "note" "warning" "error" "failure"))
+(identifier) @variable
 
 [
-    "alias"
-    "package"
-    "entity"
-    "architecture"
-    "type"
-    "to"
-    "downto"
-    "signal"
-    "variable"
-    "record"
-    "array"
-    "others"
-    "process"
-    "component"
-    "constant"
-    "port"
-    "generic"
-    "generate"
-    "function"
-    "return"
-    "range"
-    "map"
+    (ACCESS) (AFTER) (ALIAS) (ARCHITECTURE) (ARRAY) (ASSUME)
+    (ATTRIBUTE) (BLOCK) (BODY) (COMPONENT)
+    (CONFIGURATION) (CONTEXT) (COVER) (DISCONNECT)
+    (ENTITY) (FAIRNESS) (FILE)
+    (FORCE) (GENERATE) (GENERIC) (GROUP)
+    (LABEL) (LITERAL)
+    (MAP) (NEW) (PACKAGE)
+    (PARAMETER) (PORT) (PROPERTY)
+    (RANGE) (REJECT)
+    (RELEASE) (RESTRICT) (SEQUENCE)
+    (TRANSPORT)
+    (UNAFFECTED) (VIEW) (VPKG) (VMODE)
+    (VPROP) (VUNIT)
 ] @keyword
 
-(named_association_element
-    actual_part: (open) @variable.builtin)
+[ (ALL) (OTHERS) (box) (DEFAULT) (OPEN) ] @constant.builtin
 
-[ "pure" "impure" ] @type.qualifier
+[ (IS) (BEGIN) (END) ] @keyword
+(parameter_specification (IN) @keyword)
 
-[ "is" "begin" "end" ] @keyword.special
+[ (PROCESS) (WAIT) (ON) (UNTIL) ] @keyword.coroutine
+(timeout_clause (FOR) @keyword.coroutine)
 
-[ "of" "in" ] @keyword.operator
+[ (FUNCTION) (PROCEDURE) ] @keyword.function
 
-[ "for" "loop" "while" ] @repeat
+[ (TO) (DOWNTO) (OF) ] @keyword.operator
 
-[ "if" "elsif" "else" "case" "then" "when" ] @conditional
-
-(function_body
-    designator: (identifier) @function)
-(function_body
-    at_end: (simple_name) @function)
-
-(procedure_call_statement
-    procedure: (simple_name) @function)
-
-[ "library" "use" ] @include
-
-[ "(" ")" "[" "]" ] @punctuation.bracket
-
-[ "." ";" "," ":" ] @punctuation.delimeter
+[ (LIBRARY) (USE) ] @keyword.import
 
 [
-    "=>" "<=" "+" ":=" "=" "/=" "<" ">" "-" "*" "/"
-    "not" "xor" "and" "nand" "or" "nor"
-    (attribute_name "'")
-    (index_subtype_definition (any))
+    (SUBTYPE) (TYPE) (RECORD) (UNITS)
+    (CONSTANT) (SIGNAL) (VARIABLE)
+] @keyword.type
+
+[
+    (PROTECTED) (PRIVATE)
+    (PURE) (IMPURE)
+    (INERTIAL) (POSTPONED) (STRONG) (GUARDED)
+    (OUT) (INOUT) (LINKAGE) (BUFFER)
+    (REGISTER) (BUS)
+    (SHARED)
+] @keyword.modifier
+(mode (IN) @keyword.modifier)
+(force_mode (IN) @keyword.modifier)
+
+[ (WHILE) (LOOP) (NEXT) (EXIT) ] @keyword.repeat
+(for_loop (FOR) @keyword.repeat)
+
+(block_configuration         (FOR) @keyword)
+(configuration_specification (FOR) @keyword)
+(component_configuration     (FOR) @keyword)
+(end_for                     (FOR) @keyword)
+
+[ (RETURN) ] @keyword.return
+
+[ (ASSERT) (REPORT) (SEVERITY) ] @keyword.debug
+
+[ (IF) (THEN) (ELSIF) (CASE) ] @keyword.conditional
+(when_element              (WHEN) @keyword.conditional)
+(case_generate_alternative (WHEN) @keyword.conditional)
+(else_statements           (ELSE) @keyword.conditional)
+(else_generate             (ELSE) @keyword.conditional)
+
+[ (WITH) (SELECT) ] @keyword.conditional.ternary
+(when_expression               (WHEN) @keyword.conditional.ternary)
+(else_expression               (ELSE) @keyword.conditional.ternary)
+(else_waveform                 (ELSE) @keyword.conditional.ternary)
+(else_expression_or_unaffected (ELSE) @keyword.conditional.ternary)
+
+[ (NULL) ] @constant.builtin
+
+(user_directive)    @keyword.directive
+(protect_directive) @keyword.directive
+(warning_directive) @keyword.directive
+(error_directive)   @keyword.directive
+
+(if_conditional_analysis    (IF)    @keyword.directive)
+(if_conditional_analysis    (THEN)  @keyword.directive)
+(elsif_conditional_analysis (ELSIF) @keyword.directive)
+(else_conditional_analysis  (ELSE)  @keyword.directive)
+(end_conditional_analysis   (END)   @keyword.directive)
+(end_conditional_analysis   (IF)    @keyword.directive)
+
+(directive_body)             @keyword.directive
+(directive_constant_builtin) @constant.macro
+(directive_error)            @comment.error
+(directive_protect)          @keyword.directive
+(directive_warning)          @comment.warning
+
+[
+    (condition_conversion)
+    (unary_operator)
+    (logical_operator)
+    (relational_operator)
+    (shift_operator)
+    (sign)
+    (adding_operator)
+    (multiplying_operator)
+    (exponentiate)
+    (variable_assignment)
+    (signal_assignment)
 ] @operator
 
+[ "'" "," "." ";" ] @punctuation.delimiters
+
+[ "("  ")" "["  "]" "<<" ">>" ] @punctuation.bracket
+
+[ ":" "@" "=>" ] @punctuation.special
+
 [
-    ((character_literal))
-    (integer_decimal)
-    (real_decimal)
+    (decimal_literal)
+    (based_literal)
+    (bit_string_literal)
 ] @number
 
-(string_literal) @string
-(bit_string_literal) @string
+[
+    (decimal_literal_float)
+    (based_literal_float)
+] @number.float
 
-(assertion_statement
-    (string_expression
-        (string_literal) @string @spell))
-(report_statement
-    (string_expression
-        (string_literal) @string @spell))
+(string_literal) @string @spell
+(character_literal) @character
+(library_constant_std_logic) @constant.builtin
 
-(physical_literal
-    unit: (simple_name) @attribute)
+[
+    (attribute_function)
+    (attribute_impure_function)
+    (attribute_mode_view)
+    (attribute_pure_function)
+    (attribute_range)
+    (attribute_signal)
+    (attribute_subtype)
+    (attribute_type)
+    (attribute_value)
+    (library_attribute)
+] @attribute.builtin
+
+(library_constant)           @constant.builtin
+(library_function)           @function.builtin
+(library_type)               @type.builtin
+(library_constant_boolean)   @boolean
+(library_constant_character) @character
+(library_constant_debug)     @keyword.debug
+
+(unit)                       @keyword.modifier
+(library_constant_unit)      @keyword.modifier
+
+(label) @label
 
 (generic_map_aspect
-    (association_list
-        (named_association_element
-            formal_part: (simple_name) @parameter)))
+    (GENERIC) @constructor
+    (MAP)     @constructor )
 
 (port_map_aspect
-    (association_list
-        (named_association_element
-            formal_part: (simple_name) @property)))
+    (PORT) @constructor
+    (MAP)  @constructor )
 
-(sensitivity_list (_) @variable)
+(subtype_indication
+  (name
+    (identifier))) @type
 
-(default_expression (simple_name) @variable)
+(selection
+  (identifier) @variable.member )
 
-; TODO: this capture also captures indexing signals as if they're functions.
-; Don't know if there's anyway around that, might just need to either have
-; function calls highlighted as variables or vice versa
-(expression
-    (ambiguous_name
-        prefix: ((simple_name) @variable)
-        (expression_list)))
+(attribute_identifier) @attribute
 
-(conditional_expression
-    (simple_name) @variable)
-
-(conditional_expression
-    (parenthesized_expression
-        (simple_name) @variable))
-
-(relation
-    (simple_name) @variable)
-(attribute_name
-    prefix: (_) @variable
-    designator: (_) @field)
-
-; ascending and descending specs. TODO see if these can be merged into one
-; query these two are for when there is an expression with multiple arguments,
-; such as (a - b - 1 downto 0)
-(_
-    low: (simple_expression (simple_expression (simple_name) @constant)))
-(_
-    high: (simple_expression (simple_expression (simple_name) @constant))
-)
-; ascending and descending specs. TODO see if these can be merged into one
-; query these two are for when there is an expression with a single argument
-; such as (a downto 0)
-(_
-    low: ((simple_expression (simple_name) @constant)))
-(_
-    high: ((simple_expression (simple_name) @constant))
-)
-
-(expression
-    (simple_expression (simple_name) @variable))
-
-(package_declaration
-    name: (identifier) @namespace)
-(package_declaration
-    at_end: (simple_name) @namespace)
-
-(entity_declaration
-    name: (identifier) @namespace
-    at_end: (simple_name) @namespace)
-
-(component_declaration
-    name: (identifier) @variable
-    at_end: (simple_name) @variable)
-
-(full_type_declaration
-    name: (identifier) @type.definition)
-
-(record_type_definition
-    at_end: (simple_name) @type)
-
-(architecture_body
-    name: (identifier) @method
-    entity: (simple_name) @namespace
-    at_end: (simple_name) @method)
-
-(component_instantiation
-    component: (simple_name) @variable)
-
-(label (identifier) @label)
-
-(process_statement
-    at_end: (simple_name) @label)
-
-(for_generate_statement
-    at_end: (simple_name) @label)
-
-(if_generate_statement
-    at_end: (simple_name) @label)
-
-(entity_instantiation
-    entity: (selected_name
-        prefix: (simple_name) @namespace
-        suffix: (simple_name) @namespace))
+(library_namespace) @module.builtin
 
 (library_clause
-    (logical_name_list
-        library: (simple_name) @namespace))
+  (logical_name_list
+    (identifier) @module ))
 (use_clause
-    (selected_name
-        prefix: (selected_name
-            prefix: (simple_name) @namespace)
-        suffix: (_) @function
-))
-(use_clause
-    (selected_name
-        prefix: (simple_name) @namespace
-))
+  (selected_name
+    . (identifier) @module ))
+(instantiated_unit
+  (name
+    . (identifier) @module ))
 
-(constant_declaration
-    (identifier_list
-        (identifier) @constant))
+(function_specification
+  (operator_symbol) @function.builtin)
 
-(signal_interface_declaration
-    (identifier_list
-        (identifier) @variable))
+(function_specification
+  (identifier) @function)
 
-(signal_declaration
-    (identifier_list
-        (identifier) @variable))
+(procedure_specification
+  (identifier) @function.method)
 
-(entity_header
-    (port_clause
-        (signal_interface_declaration
-            (identifier_list
-                (identifier) @field))))
+(type_declaration      (identifier) @type.definition)
+(mode_view_declaration (identifier) @type.definition)
+(record_mode_view_indication (name (identifier) @type))
 
-(component_instantiation_statement
-    (label
-        (identifier) @label))
+(package_declaration (identifier) @module)
+(package_definition  (identifier) @module)
+(end_package         (identifier) @module)
+(end_package_body    (identifier) @module)
 
-(record_type_definition
-    (_
-    (identifier_list
-        (identifier) @field)))
+(entity_declaration  (identifier) @module)
+(end_entity          (identifier) @module)
 
-(simple_waveform_assignment
-    target: (_) @variable)
+(architecture_definition
+  (ARCHITECTURE)
+  (identifier) @property
+  (OF)
+  (name
+    (identifier) @module))
 
-(constant_interface_declaration
-    (identifier_list
-        (identifier) @constant))
+(end_architecture (identifier) @property)
+(subprogram_end   (identifier) @function)
 
-(generic_clause
-    (constant_interface_declaration
-        (identifier_list
-            (identifier) @parameter)))
-
-(simple_concurrent_signal_assignment
-    target: (simple_name) @variable)
-
-(ambiguous_name
-    prefix: (simple_name) @variable)
-
-(ambiguous_name
-    prefix: (simple_name) @function.builtin (#match? @function.builtin
-        "^\(\(rising\|falling\)_edge\)$"))
-
-(ambiguous_name
-    prefix: (simple_name) @type (#match? @type
-        "^\(std_logic\(_vector\)\?\|real\|\(to_\)\?\(\(\(un\)\?signed\)\|integer\)\)$"))
-
-; math_real
-(ambiguous_name
-    prefix: (simple_name) @function.builtin (#any-of? @function.builtin
-        "sign" "ceil" "floor" "round" "fmax" "fmin" "uniform" "srand" "rand"
-        "get_rand_max" "sqrt" "cbrt" "exp" "log" "log2" "sin" "cos" "tan" "asin"
-        "acos" "atan" "atan2" "sinh" "cosh" "tanh" "asinh" "acosh" "atanh"))
-
-(procedure_call_statement
-    procedure: (simple_name) @function.builtin (#any-of? @function.builtin
-        "sign" "ceil" "floor" "round" "fmax" "fmin" "uniform" "srand" "rand"
-        "get_rand_max" "sqrt" "cbrt" "exp" "log" "log2" "sin" "cos" "tan" "asin"
-        "acos" "atan" "atan2" "sinh" "cosh" "tanh" "asinh" "acosh" "atanh"))
-
-(expression (simple_name) @variable)
-
-(expression
-    (simple_name) @variable.builtin (#match? @variable.builtin
-       "^\(true\|false\)$"))
-
-((simple_name) @variable.builtin (#eq? @variable.builtin "now"))
-
-(parameter_specification
-    name: (identifier) @variable)
-
-;; error highlighting
 (ERROR) @error
-
-(entity_header [
-    (generic_map_aspect) @error.illegal.map_aspect.generic
-    (port_map_aspect)    @error.illegal.map_aspect.port
-  ])
-
-(entity_header
-  (port_clause)
-  (generic_clause) @error.order.generic_after_port)
-
-(entity_header
-  (port_clause)
-  (port_clause) @error.repeated.clause.port)
-
-(entity_header
-  (generic_clause)
-  (generic_clause) @error.repeated.clause.generic)
-
-(entity_header [
-    (generic_clause ")" @error.missing.semicolon.after_clause .)
-    (port_clause    ")" @error.missing.semicolon.after_clause .)
-  ])
-
-(entity_declaration
-  (declarative_part [
-    (variable_declaration)
-    (component_declaration)
-    (configuration_specification)
-  ] @error.illegal.declaration))
-
-(entity_declaration
-  (concurrent_statement_part [
-    (block_statement)
-    (component_instantiation_statement)
-    (simple_concurrent_signal_assignment)
-    (conditional_concurrent_signal_assignment)
-    (selected_concurrent_signal_assignment)
-    (for_generate_statement)
-    (if_generate_statement)
-    (case_generate_statement)
-    (PSL_Property_Declaration)
-    (PSL_Sequence_Declaration)
-    (PSL_Clock_Declaration)
-  ] @error.illegal.statement))
-
-;; tree-sitter-cli
-;; NOTE: Only simple cases
-(entity_declaration
-  (concurrent_statement_part
-    (process_statement
-      (sequence_of_statements [
-        (simple_waveform_assignment)
-        (simple_force_assignment)
-        (simple_release_assignment)
-      ] @error.illegal.assignment.in_passive_process))
-  ))
-
-;; nvim-tree-sitter
-((simple_waveform_assignment)
- (#has-ancestor?
-    @error.illegal.assignment.in_passive_process
-    entity_declaration))
-
-;; nvim-tree-sitter
-((simple_force_assignment)
- (#has-ancestor?
-    @error.illegal.assignment.in_passive_process
-    entity_declaration))
-
-;; nvim-tree-sitter
-((simple_release_assignment)
- (#has-ancestor?
-    @error.illegal.assignment.in_passive_process
-    entity_declaration))
-
-((entity_declaration
-   name: (_) @_h
- at_end: (_) @error.misspeling.name @_t)
-         (#not-eq? @_h @_t))
-; }}}
-; 3.3 Architecture bodies {{{
-(architecture_body
-  (declarative_part
-    (variable_declaration) @error.illegal.declaration))
-
-((architecture_body
-   name: (_) @_h
- at_end: (_) @error.misspeling.name @_t)
-         (#not-eq? @_h @_t))
-; }}}
-; 4.2 Subprogram declaration {{{
-(procedure_declaration
-  ["pure" "impure"] @error.unexpected.purity)
-
-(procedure_declaration
-  designator: (operator_symbol) @error.illegal.designator.operator_symbol)
-
-(procedure_declaration
-  (return) @error.unexpected.return)
-
-;;
-(function_declaration
-  designator: (_) . (function_parameter_clause)? . ";" @error.missing.return)
-
-;;
-(subprogram_header [
-    (port_clause)     @error.illegal.clause.port
-    (port_map_aspect) @error.illegal.map_aspect.port
-  ])
-
-(subprogram_header
-  (generic_clause)
-  (generic_clause) @error.repeated.clause.generic)
-
-(subprogram_header
-  (generic_map_aspect)
-  (generic_map_aspect) @error.repeated.map_aspect.generic)
-
-; FIXME
-; Negation rule not supported yet (tree-sitter version v0.19.4)
-;(subprogram_header
-; . !(generic_clause)*
-; .  (generic_map_aspect  ["generic" "map"] @error.missing.clause.generic)
-; . !(generic_clause)*)
-
-; WORKARROUND
-; Only single common case
-(subprogram_header
-. (generic_map_aspect) @error.missing.clause.generic
-. )
-
-(subprogram_header
-  (generic_map_aspect)
-  (generic_clause) @error.order.clause_after_map_aspect)
-
-(subprogram_header [
-    (generic_clause     (semicolon) @error.unexpected.semicolon.after_clause     .)
-    (generic_map_aspect (semicolon) @error.unexpected.semicolon.after_map_aspect .)
-  ])
-; }}}
-; 4.2 Subprogram bodies {{{
-(procedure_body
-  ["pure" "impure"] @error.unexpected.purity)
-
-(procedure_body
-  designator: (operator_symbol) @error.illegal.designator.operator_symbol)
-
-(procedure_body
-  at_end: (operator_symbol) @error.illegal.designator.operator_symbol)
-
-(procedure_body
-  (return) @error.unexpected.return)
-
-(procedure_body
-  (declarative_part [
-    (incomplete_type_declaration)
-    (signal_declaration)
-    (component_declaration)
-    (configuration_specification)
-    (disconnection_specification)
-    (PSL_Assert_Directive)
-    (PSL_Assume_Directive)
-    (PSL_Assume_Guarantee_Directive)
-    (PSL_Restrict_Directive)
-    (PSL_Restrict_Guarantee_Directive)
-    (PSL_Cover_Directive)
-    (PSL_Fairness_Directive)
-    (PSL_Strong_Fairness_Directive)
-    (PSL_Property_Declaration)
-    (PSL_Sequence_Declaration)
-    (PSL_Clock_Declaration)
-  ] @error.illegal.declaration))
-
-(procedure_body
-  (declarative_part
-    (shared_variable_declaration "shared" @error.unexpected.shared)))
-
-(procedure_body
-          "procedure"
-  at_end: "function"  @error.misspeling.subprogram_kind)
-
-((procedure_body
- designator: (_) @_h
-     at_end: (_) @error.misspeling.designator @_t)
-             (#not-eq? @_h @_t))
-;;
-(function_body
-  designator: (_) . (function_parameter_clause)? . "is" @error.missing.return)
-
-(function_body
-  at_end: ["pure" "impure"] @error.unexpected.purity.at_end)
-
-(function_body
-  (declarative_part [
-    (signal_declaration)
-    (component_declaration)
-    (configuration_specification)
-    (disconnection_specification)
-    (PSL_Assert_Directive)
-    (PSL_Assume_Directive)
-    (PSL_Assume_Guarantee_Directive)
-    (PSL_Restrict_Directive)
-    (PSL_Restrict_Guarantee_Directive)
-    (PSL_Cover_Directive)
-    (PSL_Fairness_Directive)
-    (PSL_Strong_Fairness_Directive)
-    (PSL_Property_Declaration)
-    (PSL_Sequence_Declaration)
-    (PSL_Clock_Declaration)
-  ] @error.illegal.declaration))
-
-(function_body
-  (declarative_part
-    (shared_variable_declaration "shared" @error.unexpected.shared)))
-
-(function_body
-          "function"
-  at_end: "procedure" @error.misspeling.subprogram_kind)
-
-((function_body
- designator: (_) @_h
-     at_end: (_) @error.misspeling.designator @_t)
-             (#not-eq? @_h @_t))
-; }}}
-; 4.3 Subprogram instantiation {{{
-(procedure_instantiation_declaration
-  ["pure" "impure"] @error.unexpected.purity)
-
-(procedure_instantiation_declaration
-  designator: (operator_symbol) @error.illegal.designator.operator_symbol)
-
-(procedure_instantiation_declaration
-  (signature (return) @error.unexpected.return))
-
-;;
-(function_instantiation_declaration
-  (signature (type_mark) ("," (type_mark))* . "]" @error.missing.return))
-
-;;
-(subprogram_map_aspect [
-    (generic_clause)  @error.illegal.clause.generic
-    (port_clause)     @error.illegal.clause.port
-    (port_map_aspect) @error.illegal.map_aspect.port
-  ])
-
-(subprogram_map_aspect
-  (generic_map_aspect)
-  (generic_map_aspect) @error.repeated.map_aspect.generic)
-
-(subprogram_map_aspect
-  (generic_map_aspect (semicolon) @error.unexpected.semicolon.after_map_aspect .))
-; }}}
-; 4.2.2.1 Formal parameter list {{{
-(procedure_parameter_clause [
-    (signal_interface_declaration    (mode ["buffer" "linkage"]) @error.illegal.mode)
-    (variable_interface_declaration  (mode ["buffer" "linkage"]) @error.illegal.mode)
-    (signal_interface_declaration  (default_expression) @error.illegal.default_expression)
-    (type_interface_declaration)      @error.illegal.interface.type
-    (procedure_interface_declaration) @error.illegal.interface.procedure
-    (function_interface_declaration)  @error.illegal.interface.function
-    (package_interface_declaration)   @error.illegal.interface.package
-  ])
-
-(function_parameter_clause [
-    (signal_interface_declaration    (mode ["out" "inout" "buffer" "linkage"]) @error.illegal.mode)
-    (signal_interface_declaration  (default_expression) @error.illegal.default_expression)
-    (variable_interface_declaration)  @error.illegal.interface.variable
-    (file_interface_declaration)      @error.illegal.interface.file
-    (type_interface_declaration)      @error.illegal.interface.type
-    (procedure_interface_declaration) @error.illegal.interface.procedure
-    (function_interface_declaration)  @error.illegal.interface.function
-    (package_interface_declaration)   @error.illegal.interface.package
-  ])
-; }}}
-; 4.5 Subprogram overloading {{{
-((operator_symbol) @error.illegal.operator_symbol
-  (#not-match? @error.illegal.operator_symbol "^\"(and|or|nand|nor|xnor|s[rl]l|s[rl]a|ro[rl]|mod|rem|abs|not|\\+|\\-|&|\\?\\?|\\??[<>/]?=|\\??[<>]|\\*\\??)\"$"))
-; }}}
-; 4.5.3 Signatures {{{
-(signature
-  "[" . "]" @error.missing.type_mark)
-
-(return
-  "," @error.unexpected.comma)
-; }}}
-; 4.7 Package declarations {{{
-(package_header [
-    (port_clause)     @error.illegal.clause.port
-    (port_map_aspect) @error.illegal.map_aspect.port
-  ])
-
-(package_header
-  (generic_clause)
-  (generic_clause) @error.repeated.clause.generic)
-
-(package_header
-  (generic_map_aspect)
-  (generic_map_aspect) @error.repeated.map_aspect.generic)
-
-; FIXME
-; Negation rule not supported yet (tree-sitter version v0.19.4)
-;(package_header
-; . !(generic_clause)*
-; .  (generic_map_aspect) @error.missing.clause.generic
-; . !(generic_clause)*)
-
-; WORKARROUND
-; Only common case
-(package_header
-. (generic_map_aspect) @error.missing.clause.generic
-. )
-
-(package_header
-  (generic_map_aspect)
-  (generic_clause) @error.order.clause_after_map_aspect)
-
-(package_header [
-    (generic_clause     ")" @error.missing.semicolon.after_clause     .)
-    (generic_map_aspect ")" @error.missing.semicolon.after_map_aspect .)
-  ])
-
-(package_declaration
-  (declarative_part [
-    (procedure_body)
-    (function_body)
-    (configuration_specification)
-  ] @error.illegal.declaration))
-
-(package_declaration
-  (declarative_part
-    (full_type_declaration
-      (protected_type_body) @error.illegal.declaration)))
-
-(procedure_body
-  (declarative_part
-    (package_declaration
-      (declarative_part [
-        (signal_declaration)
-        (disconnection_specification)
-        (PSL_Property_Declaration)
-        (PSL_Sequence_Declaration)
-        (PSL_Clock_Declaration)
-      ] @error.illegal.declaration))))
-
-(procedure_body
-  (declarative_part
-    (package_declaration
-      (declarative_part
-        (shared_variable_declaration "shared" @error.unexpected.shared)))))
-
-(function_body
-  (declarative_part
-    (package_declaration
-      (declarative_part [
-        (signal_declaration)
-        (disconnection_specification)
-        (PSL_Property_Declaration)
-        (PSL_Sequence_Declaration)
-        (PSL_Clock_Declaration)
-      ] @error.illegal.declaration))))
-
-(function_body
-  (declarative_part
-    (package_declaration
-      (declarative_part
-        (shared_variable_declaration "shared" @error.unexpected.shared)))))
-
-(process_statement
-  (declarative_part
-    (package_declaration
-      (declarative_part [
-        (signal_declaration)
-        (disconnection_specification)
-        (PSL_Property_Declaration)
-        (PSL_Sequence_Declaration)
-        (PSL_Clock_Declaration)
-      ] @error.illegal.declaration))))
-
-(process_statement
-  (declarative_part
-    (package_declaration
-      (declarative_part
-        (shared_variable_declaration "shared" @error.unexpected.shared)))))
-
-(full_type_declaration
-  (protected_type_body
-    (declarative_part
-      (package_declaration
-        (declarative_part [
-          (signal_declaration)
-          (disconnection_specification)
-          (PSL_Property_Declaration)
-          (PSL_Sequence_Declaration)
-          (PSL_Clock_Declaration)
-        ] @error.illegal.declaration)))))
-
-(full_type_declaration
-  (protected_type_body
-    (declarative_part
-      (package_declaration
-        (declarative_part
-          (shared_variable_declaration "shared" @error.unexpected.shared))))))
-
-((package_declaration
-   name: (_) @_h
- at_end: (_) @error.misspeling.name @_t)
-         (#not-eq? @_h @_t))
-; }}}
-; 4.8 Package bodies {{{
-(package_body
-  (declarative_part [
-    (signal_declaration)
-    (component_declaration)
-    (configuration_specification)
-    (disconnection_specification)
-    (PSL_Assert_Directive)
-    (PSL_Assume_Directive)
-    (PSL_Assume_Guarantee_Directive)
-    (PSL_Restrict_Directive)
-    (PSL_Restrict_Guarantee_Directive)
-    (PSL_Cover_Directive)
-    (PSL_Fairness_Directive)
-    (PSL_Strong_Fairness_Directive)
-    (PSL_Property_Declaration)
-    (PSL_Sequence_Declaration)
-    (PSL_Clock_Declaration)
-  ] @error.illegal.declaration))
-
-(procedure_body
-  (declarative_part
-    (package_body
-      (declarative_part
-        (shared_variable_declaration "shared" @error.unexpected.shared)))))
-
-(function_body
-  (declarative_part
-    (package_body
-      (declarative_part
-        (shared_variable_declaration "shared" @error.unexpected.shared)))))
-
-(process_statement
-  (declarative_part
-    (package_body
-      (declarative_part
-        (shared_variable_declaration "shared" @error.unexpected.shared)))))
-
-(full_type_declaration
-  (protected_type_body
-    (declarative_part
-      (package_body
-        (declarative_part
-          (shared_variable_declaration "shared" @error.unexpected.shared))))))
-
-((package_body
- package: (_) @_h
-  at_end: (_) @error.misspeling.name @_t)
-          (#not-eq? @_h @_t))
-; }}}
-; 4.9 Package instantiation declarations {{{
-(package_map_aspect [
-    (generic_clause)  @error.illegal.clause.generic
-    (port_clause)     @error.illegal.clause.port
-    (port_map_aspect) @error.illegal.map_aspect.port
-  ])
-
-(package_map_aspect
-  (generic_map_aspect)
-  (generic_map_aspect) @error.repeated.map_aspect.generic)
-
-(package_map_aspect
-  (generic_map_aspect (semicolon) @error.unexpected.semicolon.after_map_aspect .))
-; }}}
-; 5.2 Scalar types {{{
-(ascending_range
-   low: (simple_expression (integer_decimal))
-  high: (simple_expression (real_decimal))) @error.illegal.range
-
-(ascending_range
-   low: (simple_expression (real_decimal))
-  high: (simple_expression (integer_decimal))) @error.illegal.range
-
-(descending_range
-   high: (simple_expression (integer_decimal))
-    low: (simple_expression (real_decimal))) @error.illegal.range
-
-(descending_range
-   high: (simple_expression (real_decimal))
-    low: (simple_expression (integer_decimal))) @error.illegal.range
-; }}}
-; 5.2.2 Enumeration types {{{
-((enumeration_type_definition
-  literal: (_) @_a
-  literal: (_) @error.repeated.enumerator @_b)
- (#eq? @_a @_b))
-; }}}
-; 5.2.4 Physical types {{{
-((physical_type_definition
-  (primary_unit_declaration
-    name: (_) @_p)
-  (secondary_unit_declaration
-    name: (_) @error.repeated.unit @_s))
- (#eq? @_p @_s))
-
-((physical_type_definition
-  (secondary_unit_declaration
-    name: (_) @_a)
-  (secondary_unit_declaration
-    name: (_) @error.repeated.unit @_b))
- (#eq? @_a @_b))
-
-(secondary_unit_declaration
-  (physical_literal [ (real_decimal) (based_real) ] @error.illegal.floating_point))
-
-((full_type_declaration
-  name: (_) @_h
-  (physical_type_definition
-    at_end: (_) @error.misspeling.name @_t))
- (#not-eq? @_h @_t))
-; }}}
-; 5.3.2 Array types {{{
-(index_constraint
-  (subtype_indication
-    (resolution_function) @error.unexpected.resolution_function))
-
-(parameter_specification
-  (subtype_indication
-    (resolution_function) @error.unexpected.resolution_function))
-
-(full_type_declaration
-  name: (_) @_t
-  (constrained_array_definition
-    (subtype_indication
-      (type_mark (_) @error.repeated.type @_e)))
-    (#eq? @_t @_e))
-
-(full_type_declaration
-  name: (_) @_t
-  (unbounded_array_definition
-    (subtype_indication
-      (type_mark (_) @error.repeated.type @_e)))
-    (#eq? @_t @_e))
-; }}}
-; 5.3.2.3 Predefined array types {{{
-; Predefine array types shall be one dimensional
-(subtype_indication
-  (type_mark
-    (simple_name) @_t
-    (#match? @_t "^(string|(boolean|bit|integer|real|time)_vector)$"))
-  (array_constraint
-    (index_constraint
-        (_)
-        (_) @error.illegal.discrete_range)))
-
-; String subtypes shall be indexed by positive numbers
-(subtype_indication
-  (type_mark
-    (simple_name) @_t
-    (#eq? @_t "string"))
-  (array_constraint
-    (index_constraint
-      (_
-        (simple_expression
-          (integer_decimal)
-            @error.illegal.index.zero @_l
-            (#eq? @_l "0"))))))
-
-(subtype_indication
-  (type_mark
-    (simple_name) @_t
-    (#eq? @_t "string"))
-  (array_constraint
-    (index_constraint
-      (_
-        (simple_expression
-          (sign) @error.illegal.index.negative)))))
-
-; Others predefined array types are indexed by natural numbers
-(subtype_indication
-  (type_mark
-    (simple_name) @_t
-    (#match? @_t "^(boolean|bit|integer|real|time)_vector$"))
-  (array_constraint
-    (index_constraint
-      (_
-        (simple_expression
-          (sign) @error.illegal.index.negative)))))
-; }}}
-; 5.3.3 Record types {{{
-((identifier_list
-  (_) @_a
-  (_) @error.repeated.identifier @_b)
- (#eq? @_a @_b))
-
-(record_type_definition
-  (element_declaration
-    (identifier_list (_) @_a))
-  (element_declaration
-    (identifier_list (_) @error.repeated.identifier @_b))
- (#eq? @_a @_b))
-
-((full_type_declaration
-  name: (_) @_h
-  (record_type_definition
-    at_end: (_) @error.misspeling.name @_t))
- (#not-eq? @_h @_t))
-; }}}
 

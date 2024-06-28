@@ -3,13 +3,23 @@ local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 parser_config.vhdl = {
   install_info = {
     url = "https://github.com/jpt13653903/tree-sitter-vhdl.git",
-    files = { 'src/parser.c' },
-    branch = 'main',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    branch = 'develop',
     generate_requires_npm = false, -- if stand-alone parser without npm dependencies
     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
   },
   filetype = 'vhdl', -- if filetype does not match the parser name
 }
+
+-- parser_config.vhdl = {
+--   install_info = {
+--     url = "C:\\JPT\\GitHub\\tree-sitter-vhdl",
+--     files = { 'src/parser.c' },
+--     generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+--     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+--   },
+--   filetype = 'vhdl', -- if filetype does not match the parser name
+-- }
 
 parser_config.hungarian = {
   install_info = {
