@@ -24,10 +24,15 @@ vim.opt.softtabstop   = 0
 vim.opt.shiftwidth    = 0
 vim.opt.expandtab     = true
 
-vim.opt.foldmethod    = 'indent'
-vim.opt.foldignore    = ''
-vim.opt.foldcolumn    = '2'
-vim.opt.foldlevel     = 99
+-- vim.opt.foldmethod    = 'expr'
+-- vim.opt.foldexpr      = 'nvim_treesitter#foldexpr()'
+-- vim.opt.foldenable    = false
+
+vim.opt.foldmethod     = 'indent'
+vim.opt.foldignore     = ''
+vim.opt.foldcolumn     = '2'
+vim.opt.foldlevel      = 99
+vim.opt.foldlevelstart = 99
 
 function MyFoldText()
   return '----- ' .. vim.v.foldend - vim.v.foldstart + 1 .. ' Lines -----'
