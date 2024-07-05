@@ -4,9 +4,11 @@
 ; Capture Reference: https://neovim.io/doc/user/treesitter.html#treesitter-highlight-groups
 ;-------------------------------------------------------------------------------
 ;
-(line_comment) @comment @spell
+(line_comment
+  (comment_content) @comment @spell) @comment
 
-(block_comment) @comment.documentation @spell
+(block_comment
+  (comment_content) @comment.documentation @spell) @comment
 
 (identifier) @variable
 
@@ -174,7 +176,7 @@
 (case_generate_alternative
   (WHEN) @keyword.conditional)
 
-(else_statements
+(else_statement
   (ELSE) @keyword.conditional)
 
 (else_generate
