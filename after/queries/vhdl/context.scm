@@ -11,10 +11,10 @@
   (sequential_block)
   (type_declaration)
   (if_statement
-    (then_statements) @context.end)
-  (elsif_statements
-    (then_statements) @context.end)
-  (else_statements)
+    (if_statement_body) @context.end)
+  (elsif_statement
+    (if_statement_body) @context.end)
+  (else_statement)
   (loop_statement
     (loop_body) @context.end)
   (process_statement)

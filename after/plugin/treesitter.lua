@@ -4,7 +4,7 @@ parser_config.vhdl = {
   install_info = {
     url = "https://github.com/jpt13653903/tree-sitter-vhdl.git",
     files = { 'src/parser.c', 'src/scanner.c' },
-    branch = 'temp',
+    branch = 'develop',
     generate_requires_npm = false, -- if stand-alone parser without npm dependencies
     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
   },
