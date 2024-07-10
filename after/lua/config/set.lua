@@ -16,13 +16,19 @@ vim.opt.signcolumn  = 'number'
 
 vim.opt.backup        = false
 vim.opt.undofile      = false
-vim.opt.cindent       = false
-vim.opt.autoindent    = true
-vim.opt.smartindent   = true
 vim.opt.tabstop       = 4
 vim.opt.softtabstop   = 0
 vim.opt.shiftwidth    = 0
 vim.opt.expandtab     = true
+
+vim.opt.autoindent    = true
+vim.opt.smartindent   = true
+vim.opt.cindent       = false
+
+-- vim.opt.autoindent    = false
+-- vim.opt.smartindent   = false
+-- vim.opt.cindent       = false
+-- vim.opt.indentexpr    = 'v:lua.vim.treesitter.indent()'
 
 -- vim.opt.foldmethod    = 'expr'
 -- vim.opt.foldexpr      = 'v:lua.vim.treesitter.foldexpr()'
