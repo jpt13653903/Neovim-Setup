@@ -15,7 +15,7 @@ return require('packer').startup(
     -- }
 
     use { 'catppuccin/nvim' }
-    -- use { 'ful1e5/onedark.nvim' }
+    -- use { 'navarasu/onedark.nvim' }
 
     use { 'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate'
