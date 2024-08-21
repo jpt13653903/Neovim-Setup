@@ -22,18 +22,6 @@ parser_config.hungarian = {
   filetype = 'hungarian', -- if filetype does not match the parser name
 }
 
--- TODO: Remove after these two PR's have been merged
---       - https://github.com/zhangwwpeng/tree-sitter-systemverilog/pull/2
---       - https://github.com/gmlarumbe/tree-sitter-systemverilog/pull/3
-parser_config.systemverilog = {
-  install_info = {
-    -- url = "C:/jpt_GitHub/tree-sitter-systemverilog",
-    url = "https://github.com/0dminnimda/tree-sitter-systemverilog.git",
-    files = { "src/parser.c" },
-    branch = 'fix_filenames',
-  },
-}
-
 local treesitter = require('nvim-treesitter.configs')
 
 treesitter.setup {
