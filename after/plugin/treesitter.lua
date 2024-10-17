@@ -66,7 +66,6 @@ treesitter.setup {
     'passwd',
     'python',
     'ssh_config',
-    'systemverilog',
     'toml',
     'verilog',
     'vhdl',
