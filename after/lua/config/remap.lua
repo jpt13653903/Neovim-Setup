@@ -46,3 +46,6 @@ vim.keymap.set('n', '<leader>tw', "mT:tabclose<cr>:vsp<cr>'T")
 vim.keymap.set('n', '<leader>tW', "mT:tabclose<cr>gT:vsp<cr>'T")
 vim.keymap.set('n', '<leader>wt', "<C-w>T")
 
+vim.keymap.set('v', '<leader>(', "s()<esc>Pl%");
+vim.keymap.set('v', '<leader>[', "s[]<esc>Pl%");
+vim.keymap.set('v', '<leader>{', "s{}<esc>Pl%");
