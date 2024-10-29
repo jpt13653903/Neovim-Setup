@@ -50,13 +50,13 @@ vim.keymap.set('v', '<leader>(', "s()<esc>Pl%");
 vim.keymap.set('v', '<leader>[', "s[]<esc>Pl%");
 vim.keymap.set('v', '<leader>{', "s{}<esc>Pl%");
 
-vim.keymap.set('n', '<leader>0', ":set foldlevel=0<cr>")
-vim.keymap.set('n', '<leader>1', ":set foldlevel=1<cr>")
-vim.keymap.set('n', '<leader>2', ":set foldlevel=2<cr>")
-vim.keymap.set('n', '<leader>3', ":set foldlevel=3<cr>")
-vim.keymap.set('n', '<leader>4', ":set foldlevel=4<cr>")
-vim.keymap.set('n', '<leader>5', ":set foldlevel=5<cr>")
-vim.keymap.set('n', '<leader>6', ":set foldlevel=6<cr>")
-vim.keymap.set('n', '<leader>7', ":set foldlevel=7<cr>")
-vim.keymap.set('n', '<leader>8', ":set foldlevel=8<cr>")
-vim.keymap.set('n', '<leader>9', ":set foldlevel=9<cr>")
+vim.keymap.set('n', '<leader>0', function() vim.opt.foldlevel = 0 end)
+vim.keymap.set('n', '<leader>1', function() vim.opt.foldlevel = 1 end)
+vim.keymap.set('n', '<leader>2', function() vim.opt.foldlevel = 2 end)
+vim.keymap.set('n', '<leader>3', function() vim.opt.foldlevel = 3 end)
+vim.keymap.set('n', '<leader>4', function() vim.opt.foldlevel = 4 end)
+vim.keymap.set('n', '<leader>5', function() vim.opt.foldlevel = 5 end)
+vim.keymap.set('n', '<leader>6', function() vim.opt.foldlevel = 6 end)
+vim.keymap.set('n', '<leader>7', function() vim.opt.foldlevel = 7 end)
+vim.keymap.set('n', '<leader>8', function() vim.opt.foldlevel = 8 end)
+vim.keymap.set('n', '<leader>9', function() vim.opt.foldlevel = 9 end)
