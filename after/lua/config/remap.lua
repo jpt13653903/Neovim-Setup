@@ -49,3 +49,14 @@ vim.keymap.set('n', '<leader>wt', "<C-w>T")
 vim.keymap.set('v', '<leader>(', "s()<esc>Pl%");
 vim.keymap.set('v', '<leader>[', "s[]<esc>Pl%");
 vim.keymap.set('v', '<leader>{', "s{}<esc>Pl%");
+
+vim.keymap.set('n', '<leader>0', ":set foldlevel=0<cr>")
+vim.keymap.set('n', '<leader>1', ":set foldlevel=1<cr>")
+vim.keymap.set('n', '<leader>2', ":set foldlevel=2<cr>")
+vim.keymap.set('n', '<leader>3', ":set foldlevel=3<cr>")
+vim.keymap.set('n', '<leader>4', ":set foldlevel=4<cr>")
+vim.keymap.set('n', '<leader>5', ":set foldlevel=5<cr>")
+vim.keymap.set('n', '<leader>6', ":set foldlevel=6<cr>")
+vim.keymap.set('n', '<leader>7', ":set foldlevel=7<cr>")
+vim.keymap.set('n', '<leader>8', ":set foldlevel=8<cr>")
+vim.keymap.set('n', '<leader>9', ":set foldlevel=9<cr>")
