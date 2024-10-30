@@ -39,6 +39,15 @@ return require('packer').startup(
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
+    use {
+      'stevearc/oil.nvim',
+      config = function()
+        require("oil").setup({
+          default_file_explorer = false
+        })
+      end,
+    }
+
     -- use { 'VonHeikemen/lsp-zero.nvim',
       -- branch = 'v3.x',
       -- requires = {
