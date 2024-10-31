@@ -50,6 +50,8 @@ vim.keymap.set('v', '<leader>(', "s()<esc>Pl%");
 vim.keymap.set('v', '<leader>[', "s[]<esc>Pl%");
 vim.keymap.set('v', '<leader>{', "s{}<esc>Pl%");
 
+vim.keymap.set('n', '<leader>e', vim.cmd.Explore)
+
 vim.keymap.set('n', '<leader>0', function() vim.opt.foldlevel = 0 end)
 vim.keymap.set('n', '<leader>1', function() vim.opt.foldlevel = 1 end)
 vim.keymap.set('n', '<leader>2', function() vim.opt.foldlevel = 2 end)
