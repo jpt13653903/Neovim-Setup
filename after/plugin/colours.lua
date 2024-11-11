@@ -25,7 +25,7 @@ colour.setup({
   --       Repeat      = { fg = C.blue, style = O.styles.loops or {} }, --   for, do, while, etc.
   --       Keyword     = { fg = C.blue, style = O.styles.keywords or {} }, --  any other keyword
 
-	-- 	    PreProc = { fg = C.peach }, -- (preferred) generic Preprocessor
+  --       PreProc = { fg = C.peach }, -- (preferred) generic Preprocessor
 
   --       StorageClass = { fg = C.green }, -- static, register, volatile, etc.
   --       Structure    = { fg = C.green }, --  struct, union, enum, etc.
@@ -39,4 +39,8 @@ vim.opt.background = 'dark'
 vim.cmd.colors('catppuccin')
 -- vim.cmd.colors('petrel_jpt')
 vim.cmd.syntax('enable')
+
+-- vim.cmd 'highlight Normal guibg=NONE'
+-- vim.cmd 'highlight NonText guibg=NONE'
+-- vim.cmd 'highlight SignColumn guibg=NONE'
 
