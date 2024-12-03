@@ -40,6 +40,17 @@ return require('packer').startup(
     }
 
     use {
+        'ouuan/nvim-bigfile',
+        config = function()
+            require('bigfile').setup({
+                size_limit = 5*1024*1024,
+                notification = true,
+                syntax = true,
+            })
+        end
+    }
+
+    use {
       'stevearc/oil.nvim',
       config = function()
         require("oil").setup({
