@@ -11,6 +11,17 @@ local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 --   filetype = 'vhdl', -- if filetype does not match the parser name
 -- }
 
+parser_config.alcha = {
+  install_info = {
+    url = "https://github.com/jpt13653903/tree-sitter-alcha.git",
+    files = { 'src/parser.c', 'src/scanner.c' },
+    branch = 'master',
+    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = 'alcha', -- if filetype does not match the parser name
+}
+
 parser_config.hungarian = {
   install_info = {
     url = "https://github.com/jpt13653903/tree-sitter-hungarian.git",
@@ -26,6 +37,7 @@ local treesitter = require('nvim-treesitter.configs')
 
 treesitter.setup {
   ensure_installed = {
+    'alcha',
     'arduino',
     'bash',
     'bibtex',
