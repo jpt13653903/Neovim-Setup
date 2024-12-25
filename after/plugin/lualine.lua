@@ -11,7 +11,25 @@ custom_catppuccin.normal  .c.bg = '#1e1e2e'
 custom_catppuccin.inactive.c.bg = '#181824'
 custom_catppuccin.normal  .c.fg = '#A1A8BF'
 
-require('lualine').setup {
+lualine = require('lualine')
+
+my_tabline = {
+    lualine_a = {{
+        'tabs',
+        max_length = vim.o.columns,
+        mode = 2,
+        path = 0,
+        tabs_color = {
+            active   = { fg = '#A1DA92', bg = '#424456' },
+            inactive = { fg = '#444659', bg = '#1A1A27' },
+        },
+        symbols = {
+            modified = "'",
+        },
+    }},
+}
+
+lualine.setup {
     options = {
         icons_enabled = true,
         theme = custom_catppuccin,
@@ -46,23 +64,15 @@ require('lualine').setup {
         lualine_y = {},
         lualine_z = {}
     },
-    tabline = {
-        lualine_a = {{
-            'tabs',
-            max_length = vim.o.columns,
-            mode = 2,
-            path = 0,
-            tabs_color = {
-                active   = { fg = '#A1DA92', bg = '#424456' },
-                inactive = { fg = '#444659', bg = '#1A1A27' },
-            },
-            symbols = {
-                modified = "'",
-            },
-        }},
-    },
+    tabline = my_tabline,
     winbar = {},
     inactive_winbar = {},
     extensions = {}
 }
 
+function onResize()
+    my_tabline.lualine_a[1].max_length = vim.o.columns
+    lualine.setup { tabline = my_tabline }
+end
+
+vim.cmd.autocmd('VimResized * silent! lua onResize()')
