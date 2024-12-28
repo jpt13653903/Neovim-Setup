@@ -242,7 +242,7 @@
   (identifier) @function.call)
 (function_def
   name: (identifier) @function)
-(def_parameter
+(parameter_def
   parameter: (_) @variable.parameter)
 
 (attribute_reference
