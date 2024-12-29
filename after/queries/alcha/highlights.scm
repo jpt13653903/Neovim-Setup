@@ -9,6 +9,10 @@
 (nested_comment) @spell @comment
 (todo_comment)   @spell @comment.todo
 
+(string) @spell @string
+(string
+  (escape_sequence) @nospell @string.escape)
+
 [
   (bin_prefix)
   (oct_prefix)
@@ -25,10 +29,6 @@
 (exponent) @property
 
 (imag_suffix) @attribute.builtin
-
-(string) @spell @string
-(string
-  (escape_sequence) @string.escape)
 
 (filename) @string
 (filename
@@ -168,7 +168,6 @@
   "**="
   "<<="
   ">>="
-  "$"
   "@"
   "#"
   "##"
@@ -197,9 +196,6 @@
   "]"
   "{"
   "}"
-  ":("
-  ":["
-  "$("
 ] @punctuation.bracket
 
 (vector_concat
@@ -213,6 +209,27 @@
   ":[" @operator
   "]"  @operator
   .)
+
+(wait
+  .
+  "@(" @operator
+  ")" @operator
+  .)
+
+[
+  "$"
+] @string
+
+(stringification
+  .
+  "$(" @string
+  ")" @string
+  .)
+
+(string
+  "{" @nospell @string.escape
+  (_)* @nospell
+  "}" @nospell @string.escape)
 
 (attribute_list
   "<" @punctuation.bracket
