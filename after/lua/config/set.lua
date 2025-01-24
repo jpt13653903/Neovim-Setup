@@ -62,3 +62,4 @@ vim.opt.scrolloff = 5
 
 vim.g.mapleader = ' '
 
+vim.g.filetype_v = 'verilog'
