@@ -43,6 +43,7 @@ local function toggle_terminal()
         if vim.bo[state.buf].buftype ~= 'terminal' then
             vim.cmd.terminal()
         end
+        vim.api.nvim_feedkeys('A', '', true)
     else
         vim.api.nvim_win_hide(state.win)
     end
