@@ -38,14 +38,18 @@ end
 --------------------------------------------------------------------------------
 
 local function toggle_terminal()
-    if not vim.api.nvim_win_is_valid(state.win) then
+    if vim.api.nvim_win_is_valid(state.win) then
+        vim.api.nvim_win_hide(state.win)
+    else
         state = create_floating_window(state)
         if vim.bo[state.buf].buftype ~= 'terminal' then
-            vim.cmd.terminal()
+            if vim.uv.os_uname().sysname == 'Windows_NT' then
+                vim.cmd.terminal('powershell')
+            else
+                vim.cmd.terminal()
+            end
         end
         vim.api.nvim_feedkeys('A', '', true)
-    else
-        vim.api.nvim_win_hide(state.win)
     end
 end
 vim.api.nvim_create_user_command('TerminalToggle', toggle_terminal, {})
