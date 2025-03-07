@@ -14,6 +14,9 @@ vim.keymap.set({'n', 'v'}, '<S-Insert>', '"+gP')
 vim.keymap.set( 'i',       '<S-Insert>', '<C-r><C-p>+')
 vim.keymap.set( 'c',       '<S-Insert>', '<C-r>+')
 
+vim.keymap.set('v', 'p', '"_xP')
+vim.keymap.set('v', 'P', '"_xP')
+
 vim.keymap.set('n', 'U', vim.cmd.redo)
 
 vim.keymap.set('n', 'Q', '<Nop>')
