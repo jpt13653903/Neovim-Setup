@@ -34,11 +34,9 @@ vim.keymap.set('n', 'N',  'Nzv')
 
 vim.keymap.set('n', '<F3>',  'nzv')
 vim.keymap.set('n', '<F7>',  ']szv')
-vim.keymap.set('n', '<F10>', '080lBi<cr><esc>')
 
 vim.keymap.set('i', '<F3>',  '<esc>lnzvi')
 vim.keymap.set('i', '<F7>',  '<esc>l]szvi')
-vim.keymap.set('i', '<F10>', '<esc>080lBi<cr>')
 
 vim.keymap.set('n', '<leader>tn', vim.cmd.tabnew)
 vim.keymap.set('n', '<leader>tc', vim.cmd.tabclose)
