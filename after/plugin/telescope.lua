@@ -50,12 +50,40 @@ local live_multigrep = function(opts)
 end
 --------------------------------------------------------------------------------
 
+local goto_file = function(opts)
+    filename = vim.fn.expand('<cword>')
+
+    opts = opts or {}
+    opts.cwd = opts.cwd or vim.uv.cwd()
+
+    find_command = { 'rg',
+        '--files', '--color=never', '--no-heading', '--with-filename',
+        '--line-number', '--column', '--smart-case',
+        '-g', '*' .. filename .. '*'
+    }
+
+    ---@diagnostic disable-next-line: deprecated
+    find_command = vim.tbl_flatten {
+        find_command,
+    }
+
+    pickers.new(opts, {
+        debounce     = 100,
+        prompt_title = 'Goto File (' .. filename .. ')',
+        finder       = finders.new_oneshot_job(find_command, opts),
+        previewer    = conf.file_previewer(opts),
+        sorter       = conf.file_sorter(opts),
+    }):find()
+end
+--------------------------------------------------------------------------------
+
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files,  {})
 vim.keymap.set('n', '<leader>fo', builtin.oldfiles,   {})
 vim.keymap.set('n', '<leader>fm', builtin.marks,      {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers,    {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags,  {})
+vim.keymap.set('n', '<leader>gf', goto_file,          {})
 
 vim.keymap.set('n', '<leader>*', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>/', live_multigrep,      {})

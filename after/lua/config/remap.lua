@@ -32,6 +32,9 @@ vim.keymap.set('n', '^', 'g^')
 vim.keymap.set('n', 'n',  'nzv')
 vim.keymap.set('n', 'N',  'Nzv')
 
+-- vim.keymap.set('v', '<',  '<gv')
+-- vim.keymap.set('v', '>',  '>gv')
+
 vim.keymap.set('n', '<F3>',  'nzv')
 vim.keymap.set('n', '<F7>',  ']szv')
 
