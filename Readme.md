@@ -21,6 +21,10 @@
 8. Add `alias vim=nvim` to `~/.bashrc`
 9. Add a shortcut to `nvim.exe` to `~/AppData/Roaming/Microsoft/Windows/SendTo`
 
+## LSP
+
+For VHDL LSP to work, install `rust_hdl` by using Mason
+
 ## Catppuccin Mocha in PowerShell
 
 Open up the settings and click on "Open JSON file" in to bottom left.  Then add
