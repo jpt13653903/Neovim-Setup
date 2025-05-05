@@ -85,6 +85,11 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers,    {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags,  {})
 vim.keymap.set('n', '<leader>gf', goto_file,          {})
 
+vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>fd', builtin.lsp_definitions,      {})
+vim.keymap.set('n', '<leader>fi', builtin.lsp_implementations,  {})
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references,       {})
+
 vim.keymap.set('n', '<leader>*', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>/', live_multigrep,      {})
 --------------------------------------------------------------------------------

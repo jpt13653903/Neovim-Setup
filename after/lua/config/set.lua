@@ -58,7 +58,7 @@ vim.opt.cursorline = true
 vim.opt.hlsearch  = true
 vim.opt.incsearch = true
 
-vim.opt.completeopt = 'fuzzy,menu,noselect'
+vim.opt.completeopt = 'fuzzy,menuone,noselect,popup'
 
 vim.opt.scrolloff = 5
 
