@@ -8,11 +8,11 @@ vim.opt.tabstop = 4;
 vim.lsp.start({
     name = 'clangd',
     cmd = {'clangd'},
-    root_dir = vim.fs.dirname(vim.fs.find({ '.clangd', '.git' }, { upward = true })[1]),
+    root_dir = vim.fs.dirname(vim.fs.find({ '.clangd', '.git' }, { upward = true })[1]) or '.',
     on_attach = function(client, bufnr)
         client.server_capabilities.semanticTokensProvider = nil
         vim.lsp.completion.enable(true, client.id, bufnr, {
-            autotrigger = true,
+            autotrigger = false,
             convert = function(item)
                 return { abbr = item.label:gsub('%b()', '') }
             end,

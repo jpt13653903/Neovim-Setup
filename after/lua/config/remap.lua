@@ -23,7 +23,7 @@ vim.keymap.set('n', 'Q', '<Nop>')
 
 vim.keymap.set({'i', 'v'}, '<MiddleMouse>', '<Nop>')
 
-vim.keymap.set('i', '<C-Space>', '<C-p>')
+vim.keymap.set('i', '<C-m>', '<C-x><C-o>')
 
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')

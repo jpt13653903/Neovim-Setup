@@ -6,11 +6,11 @@ vim.opt.tabstop = 2;
 vim.lsp.start({
     name = 'vhdl_ls',
     cmd = {'vhdl_ls'},
-    root_dir = vim.fs.dirname(vim.fs.find({ 'vhdl_ls.toml', '.git' }, { upward = true })[1]),
+    root_dir = vim.fs.dirname(vim.fs.find({ 'vhdl_ls.toml', '.git' }, { upward = true })[1]) or '.',
     on_attach = function(client, bufnr)
         client.server_capabilities.semanticTokensProvider = nil
         vim.lsp.completion.enable(true, client.id, bufnr, {
-            autotrigger = true,
+            autotrigger = false,
             convert = function(item)
                 return { abbr = item.label:gsub('%b()', '') }
             end,
