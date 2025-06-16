@@ -7,14 +7,14 @@ return require('packer').startup(
         use { 'catppuccin/nvim' }
 
         use { 'nvim-treesitter/nvim-treesitter',
-            run = ':TSUpdate'
+            branch = 'main',
+            run    = ':TSUpdate'
         }
 
         use { 'nvim-treesitter/nvim-treesitter-context' }
 
         use { 'nvim-telescope/telescope.nvim',
-            -- tag = '0.1.8',
-            branch = '0.1.x',
+            branch   = 'master',
             requires = { 'nvim-lua/plenary.nvim' }
         }
 

@@ -42,7 +42,7 @@ vim.opt.foldlevel      = 99
 vim.opt.foldlevelstart = 99
 
 function MyFoldText()
-  return '----- ' .. vim.v.foldend - vim.v.foldstart + 1 .. ' Lines -----'
+    return '----- ' .. vim.v.foldend - vim.v.foldstart + 1 .. ' Lines -----'
 end
 vim.opt.foldtext = 'v:lua.MyFoldText()'
 vim.opt.fillchars = { eob = '-', fold = ' ' }

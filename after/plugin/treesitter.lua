@@ -1,31 +1,30 @@
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+local parser_config = require('nvim-treesitter.parsers')
 
-parser_config.alcha = {
-  install_info = {
-    url = "https://github.com/jpt13653903/tree-sitter-alcha.git",
-    files = { 'src/parser.c', 'src/scanner.c' },
-    branch = 'master',
-    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-  },
-  filetype = 'alcha', -- if filetype does not match the parser name
-}
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+callback = function()
+    require('nvim-treesitter.parsers').alcha = {
+        install_info = {
+            url     = "https://github.com/jpt13653903/tree-sitter-alcha.git",
+            files   = { 'src/parser.c', 'src/scanner.c' },
+            branch  = 'master',
+            queries = 'queries',
+        },
+    }
+end})
 
-parser_config.hungarian = {
-  install_info = {
-    url = "https://github.com/jpt13653903/tree-sitter-hungarian.git",
-    files = { 'src/parser.c', 'src/scanner.c' },
-    branch = 'master',
-    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-  },
-  filetype = 'hungarian', -- if filetype does not match the parser name
-}
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+callback = function()
+    require('nvim-treesitter.parsers').hungarian = {
+        install_info = {
+            url     = "https://github.com/jpt13653903/tree-sitter-hungarian.git",
+            files   = { 'src/parser.c', 'src/scanner.c' },
+            branch  = 'master',
+            queries = 'queries',
+        },
+    }
+end})
 
-local treesitter = require('nvim-treesitter.configs')
-
-treesitter.setup {
-  ensure_installed = {
+languages = {
     'alcha',
     'arduino',
     'bash',
@@ -74,16 +73,13 @@ treesitter.setup {
     'vimdoc',
     'xml',
     'yaml',
-  },
-
-  sync_install = false,
-  auto_install = true,
-
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  -- indent = { enable = true }
 }
 
--- vim.g._ts_force_sync_parsing = true
+local treesitter = require('nvim-treesitter')
+
+treesitter.install(languages)
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern  = languages,
+  callback = function() vim.treesitter.start() end,
+})
