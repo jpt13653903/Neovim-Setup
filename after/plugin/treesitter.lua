@@ -1,5 +1,3 @@
-local parser_config = require('nvim-treesitter.parsers')
-
 vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
 callback = function()
     require('nvim-treesitter.parsers').alcha = {
@@ -24,7 +22,7 @@ callback = function()
     }
 end})
 
-languages = {
+local languages = {
     'alcha',
     'arduino',
     'bash',
@@ -74,10 +72,7 @@ languages = {
     'xml',
     'yaml',
 }
-
-local treesitter = require('nvim-treesitter')
-
-treesitter.install(languages)
+require('nvim-treesitter').install(languages)
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern  = languages,
