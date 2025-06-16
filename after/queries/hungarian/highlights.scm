@@ -1,4 +1,0 @@
-;; extends
-
-(identifier (prefix) @comment)
-

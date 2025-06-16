@@ -19,7 +19,7 @@ callback = function()
             url     = "https://github.com/jpt13653903/tree-sitter-hungarian.git",
             files   = { 'src/parser.c', 'src/scanner.c' },
             branch  = 'master',
-            queries = 'queries',
+            queries = 'queries/hungarian',
         },
     }
 end})
