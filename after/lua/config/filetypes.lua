@@ -1,0 +1,23 @@
+vim.filetype.add({extension = {
+    alc       = 'alcha',
+    ah        = 'alcha',
+    bsc       = 'bsc',
+    inc       = 'cpp',
+    ebnf      = 'ebnf',
+    fx        = 'hlsl',
+    hlsl      = 'hlsl',
+    jinja     = 'jinja',
+    template  = 'jinja',
+    j2        = 'jinja',
+    htmljinja = 'htmljinja',
+    json      = 'json5',
+    json5     = 'json5',
+    tex       = 'latex',
+    mif       = 'mif',
+    qsf       = 'qsf',
+    qpf       = 'qsf',
+    pin       = 'qsf',
+    sdc       = 'sdc',
+    xdc       = 'sdc',
+}})
+
