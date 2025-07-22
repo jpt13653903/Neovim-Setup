@@ -1,8 +1,8 @@
 require('common.GenericKeymaps')
 CommentKeymap([[;]])
 
-vim.opt.tabstop     = 4
-vim.opt.autoindent  = false
-vim.opt.cindent     = false
-vim.opt.smartindent = true
+vim.opt_local.tabstop     = 4
+vim.opt_local.autoindent  = false
+vim.opt_local.cindent     = false
+vim.opt_local.smartindent = true
 

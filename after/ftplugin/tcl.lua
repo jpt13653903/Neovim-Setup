@@ -1,5 +1,5 @@
 require('common.GenericKeymaps')
 CommentKeymap([[#]])
 
-vim.opt.tabstop = 4
+vim.opt_local.tabstop = 4
 

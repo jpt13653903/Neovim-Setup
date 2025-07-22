@@ -1,5 +1,5 @@
 require('common.GenericKeymaps')
 CommentKeymap([[\/\/]])
 
-vim.opt.tabstop = 2;
+vim.opt_local.tabstop = 2;
 
