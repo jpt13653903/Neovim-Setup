@@ -29,7 +29,7 @@ return require('packer').startup(
             'ouuan/nvim-bigfile',
             config = function()
                 require('bigfile').setup({
-                    size_limit = 5*1024*1024,
+                    size_limit = 512*1024,
                     notification = true,
                     syntax = true,
                 })
