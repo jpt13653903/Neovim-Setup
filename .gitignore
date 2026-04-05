@@ -5,3 +5,5 @@
 ~*
 
 plugin/packer_compiled.lua
+nvim-pack-lock.json
+
