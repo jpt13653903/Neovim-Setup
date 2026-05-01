@@ -3,9 +3,7 @@ vim.pack.add({
 
     { src = 'https://github.com/catppuccin/nvim' },
 
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
-
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
+    { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
 
     { src = 'https://github.com/nvim-lua/plenary.nvim' },
     { src = 'https://github.com/nvim-telescope/telescope.nvim', version = 'master' },

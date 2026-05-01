@@ -1,79 +1,83 @@
-vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
-callback = function()
-    require('nvim-treesitter.parsers').alcha = {
-        install_info = {
-            url     = "https://github.com/jpt13653903/tree-sitter-alcha.git",
-            files   = { 'src/parser.c', 'src/scanner.c' },
-            branch  = 'master',
-            queries = 'queries',
+require("tree-sitter-manager").setup({
+    ensure_installed = {
+        'alcha',
+        'arduino',
+        'bash',
+        'bibtex',
+        'c',
+        'c_sharp',
+        'comment',
+        'cpp',
+        'css',
+        'csv',
+        'cuda',
+        'devicetree',
+        'diff',
+        'ebnf',
+        'git_config',
+        'git_rebase',
+        'gitattributes',
+        'gitcommit',
+        'gitignore',
+        'glsl',
+        'hlsl',
+        'html',
+        'htmldjango',
+        'http',
+        'hungarian',
+        'ini',
+        'javascript',
+        'json',
+        'json5',
+        'latex',
+        'lua',
+        'luadoc',
+        'make',
+        'markdown',
+        'matlab',
+        'mermaid',
+        'objdump',
+        'passwd',
+        'python',
+        'ssh_config',
+        'systemverilog',
+        'toml',
+        'vhdl',
+        'vim',
+        'vimdoc',
+        'xml',
+        'yaml',
+    },
+    languages = {
+        vhdl = {
+            install_info = {
+                url      = 'https://github.com/jpt13653903/tree-sitter-vhdl',
+                revision = 'master',
+            },
         },
-    }
-end})
-
-vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
-callback = function()
-    require('nvim-treesitter.parsers').hungarian = {
-        install_info = {
-            url     = "https://github.com/jpt13653903/tree-sitter-hungarian.git",
-            files   = { 'src/parser.c', 'src/scanner.c' },
-            branch  = 'master',
-            queries = 'queries/hungarian',
+        alcha = {
+            install_info = {
+                url              = "https://github.com/jpt13653903/tree-sitter-alcha.git",
+                files            = { 'src/parser.c', 'src/scanner.c' },
+                revision         = 'master',
+                queries          = 'queries',
+                use_repo_queries = true,
+            },
         },
-    }
-end})
-
-local languages = {
-    'alcha',
-    'arduino',
-    'bash',
-    'bibtex',
-    'c',
-    'c_sharp',
-    'comment',
-    'cpp',
-    'css',
-    'csv',
-    'cuda',
-    'devicetree',
-    'diff',
-    'ebnf',
-    'git_config',
-    'git_rebase',
-    'gitattributes',
-    'gitcommit',
-    'gitignore',
-    'glsl',
-    'hlsl',
-    'html',
-    'htmldjango',
-    'http',
-    'hungarian',
-    'ini',
-    'javascript',
-    'json',
-    'json5',
-    'latex',
-    'lua',
-    'luadoc',
-    'make',
-    'markdown',
-    'matlab',
-    'mermaid',
-    'objdump',
-    'passwd',
-    'python',
-    'ssh_config',
-    'systemverilog',
-    'toml',
-    'vhdl',
-    'vim',
-    'vimdoc',
-    'xml',
-    'yaml',
-}
-require('nvim-treesitter').install(languages)
-
-vim.api.nvim_create_autocmd('FileType', {
-    pattern  = languages,
-    callback = function() vim.treesitter.start() end,
+        hungarian = {
+            install_info = {
+                url              = "https://github.com/jpt13653903/tree-sitter-hungarian.git",
+                files            = { 'src/parser.c', 'src/scanner.c' },
+                revision         = 'master',
+                queries          = 'queries/hungarian',
+                use_repo_queries = true,
+            },
+        },
+    },
+    -- border = nil, -- border style for the window (e.g. "rounded", "single"), if nil, use the default border style defined by 'vim.o.winborder'. See :h 'winborder' for more info.
+    -- auto_install = false, -- if enabled, install missing parsers when editing a new file
+    -- highlight = true, -- treesitter highlighting is enabled by default
+    -- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
+    -- query_dir = vim.fn.stdpath("data") .. "/site/queries",
 })
+
