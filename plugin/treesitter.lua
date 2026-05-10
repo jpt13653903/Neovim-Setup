@@ -29,6 +29,7 @@ require("tree-sitter-manager").setup({
         'javascript',
         'json',
         'json5',
+        'julia',
         'latex',
         'lua',
         'luadoc',
