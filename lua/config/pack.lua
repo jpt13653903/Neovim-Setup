@@ -1,6 +1,4 @@
 vim.pack.add({
-    { src = 'https://github.com/wbthomason/packer.nvim' },
-
     { src = 'https://github.com/catppuccin/nvim' },
 
     { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
