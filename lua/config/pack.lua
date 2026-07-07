@@ -16,6 +16,8 @@ vim.pack.add({
     { src = 'https://github.com/stevearc/oil.nvim' },
 
     { src = 'https://github.com/williamboman/mason.nvim' },
+
+    { src = 'https://github.com/JuliaEditorSupport/julia-vim' },
 })
 
 require('bigfile').setup({
