@@ -50,6 +50,12 @@ require("tree-sitter-manager").setup({
         'yaml',
     },
     languages = {
+        systemverilog = {
+            install_info = {
+                url      = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
+                revision = 'master',
+            },
+        },
         vhdl = {
             install_info = {
                 url      = 'https://github.com/jpt13653903/tree-sitter-vhdl',
