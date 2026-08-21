@@ -59,7 +59,9 @@ require("tree-sitter-manager").setup({
         vhdl = {
             install_info = {
                 url      = 'https://github.com/jpt13653903/tree-sitter-vhdl',
-                revision = 'master',
+                revision = 'feature/indents-query',
+                queries  = 'queries/Neovim',
+                use_repo_queries = true,
             },
         },
         alcha = {
@@ -86,5 +88,13 @@ require("tree-sitter-manager").setup({
     -- highlight = true, -- treesitter highlighting is enabled by default
     -- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
     -- query_dir = vim.fn.stdpath("data") .. "/site/queries",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "vhdl",
+    callback = function(args)
+        vim.bo[args.buf].indentexpr =
+            "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
 })
 
