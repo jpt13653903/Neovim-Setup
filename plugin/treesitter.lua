@@ -59,7 +59,7 @@ require("tree-sitter-manager").setup({
         vhdl = {
             install_info = {
                 url      = 'https://github.com/jpt13653903/tree-sitter-vhdl',
-                revision = 'feature/indents-query',
+                revision = 'develop',
                 queries  = 'queries/Neovim',
                 use_repo_queries = true,
             },
