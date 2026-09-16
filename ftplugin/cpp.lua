@@ -23,6 +23,9 @@ vim.lsp.start({
 vim.keymap.set('n', 'K', function()
     vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 120 }
 end)
+vim.keymap.set({ 'n', 'i' }, '<C-k>', function()
+    vim.lsp.buf.signature_help { border = 'rounded' }
+end)
 vim.keymap.set('n', 'gri', function()
     vim.lsp.buf.definition()
     vim.lsp.buf.definition()
