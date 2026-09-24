@@ -21,7 +21,11 @@
 
 ## LSP
 
-For VHDL LSP to work, install `rust_hdl` by using Mason
+- VHDL:
+    - Install `rust_hdl` by using Mason
+- C++:
+    - Install `clangd` by using Mason
+    - Generate `compile_commands.json` by using `make | py -m compiledb`
 
 ## Catppuccin Mocha in PowerShell
 
