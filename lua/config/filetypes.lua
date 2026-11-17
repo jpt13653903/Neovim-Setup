@@ -13,6 +13,7 @@ vim.filetype.add({extension = {
     json      = 'json5',
     json5     = 'json5',
     tex       = 'latex',
+    m         = 'matlab',
     mif       = 'mif',
     qsf       = 'qsf',
     qpf       = 'qsf',
