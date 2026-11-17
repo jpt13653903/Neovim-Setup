@@ -1,3 +1,8 @@
+local ignored_codes = {
+    NOPTS = true,
+    CLALL = true
+}
+
 return {
     cmd = { 'matlab-language-server', '--stdio' },
     filetypes = { 'matlab' },
@@ -9,5 +14,15 @@ return {
             matlabConnectionTiming = 'onStart',
             telemetry = false,
         },
+    },
+    handlers = {
+        ['textDocument/publishDiagnostics'] = function(err, result, ctx)
+            if result and result.diagnostics then
+                result.diagnostics = vim.tbl_filter(function(d)
+                    return not ignored_codes[tostring(d.code)]
+                end, result.diagnostics)
+            end
+            vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
+        end,
     },
 }
